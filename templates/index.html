@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trivia Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🎉 Welcome to Trivia Quiz 🎉</h1>
+    <form method="POST">
+      <input type="text" name="name" placeholder="Enter your name" required>
+
+      <label>Select Difficulty:</label>
+      <select name="difficulty" required>
+        <option value="easy">😌 Easy</option>
+        <option value="medium">😎 Medium</option>
+        <option value="hard">🥵 Hard</option>
+      </select>
+
+      <label>Select Category:</label>
+      <select name="category" required>
+        {% for id, name in categories.items() %}
+            <option value="{{ id }}">{{ name }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">🚀 Start Game</button>
+    </form>
+
+    <!-- Leaderboard Button -->
+    <form action="{{ url_for('leaderboard') }}" method="GET" style="margin-top: 20px;">
+      <button type="submit" class="leaderboard-button">🏆 View Leaderboard</button>
+    </form>
+  </div>
+</body>
+</html>

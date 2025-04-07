@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>You Won!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body class="win-body">
+    <div class="win-container fade-in-scale">
+        <h1 class="glow-text">🎉 Congratulations {{ name }}! 🎉</h1>
+        <p class="amount-text">You won <span class="money-glow">₹{{ money }}</span>!</p>
+
+        <div class="btn-group">
+            <a class="glow-btn" href="/">🔁 Play Again</a>
+            <a class="glow-btn" href="/leaderboard">🏆 View Leaderboard</a>
+        </div>
+    </div>
+</body>
+</html>

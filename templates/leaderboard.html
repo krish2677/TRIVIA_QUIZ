@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaderboard.css') }}">
+</head>
+<body class="centered">
+    <div class="leaderboard-container">
+        <h1>🏆 Top 10 Players 🏆</h1>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Money</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in leaderboard %}
+                <tr>
+                    <td>#{{ player.rank }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.level }}</td>
+                    <td>₹{{ player.money }}</td>
+                    <td>{{ player.category }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="glow-button">← Back to Home</a>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="question-container fade-in">
+
+        <div class="top-bar">
+            <div class="amount-box">Question for ₹{{ amount }}</div>
+
+            {% if timer > 0 %}
+            <div id="timer-bar">
+                <span id="timer">{{ timer }}</span>s
+            </div>
+            {% endif %}
+
+            <div class="avatar">{{ session['avatar'] }}</div>
+        </div>
+
+        <!-- Question Display -->
+        <div class="question-box">
+            <h2>{{ question }}</h2>
+        </div>
+
+        <!-- Lifeline Section -->
+        <div class="lifeline-container">
+            <form method="POST">
+                {% if not session.get('used_5050') %}
+                    <button class="lifeline" type="submit" name="lifeline" value="5050" title="Removes two wrong options">🧠 50:50</button>
+                {% endif %}
+                {% if not session.get('used_skip') %}
+                    <button class="lifeline" type="submit" name="lifeline" value="skip" title="Skips the current question">⏭️ Skip</button>
+                {% endif %}
+            </form>
+        </div>
+
+        <!-- Options Section (Handled by JS now) -->
+        <div class="options-grid">
+            {% for option in options %}
+                {% if option %}
+                    <button class="option-button" data-option="{{ option }}">
+                        <span class="option-label">
+                            {{ ['A', 'B', 'C', 'D'][loop.index0] }}.
+                        </span>
+                        {{ option }}
+                    </button>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Timer Script -->
+    <script>
+        const timerElement = document.getElementById('timer');
+        let timer = parseInt(timerElement?.textContent);
+
+        if (!isNaN(timer) && timer > 0) {
+            const countdown = setInterval(() => {
+                timer--;
+                timerElement.textContent = timer;
+                if (timer <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = "{{ url_for('lost') }}";
+                }
+            }, 1000);
+        }
+    </script>
+
+    <!-- Sound -->
+    <audio id="correctSound" src="{{ url_for('static', filename='sounds/correct.mp3') }}"></audio>
+    <audio id="wrongSound" src="{{ url_for('static', filename='sounds/wrong.mp3') }}"></audio>
+
+    <!-- Submit Answer with JS + Sound -->
+    <script>
+        const buttons = document.querySelectorAll('.option-button');
+        const correctSound = document.getElementById('correctSound');
+        const wrongSound = document.getElementById('wrongSound');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', async function () {
+                // Disable all buttons to prevent spam clicks
+                buttons.forEach(b => b.disabled = true);
+
+                const selected = this.dataset.option;
+
+                const response = await fetch("{{ url_for('question') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: new URLSearchParams({ option: selected })
+                });
+
+                const data = await response.json();
+
+                const sound = data.correct ? correctSound : wrongSound;
+                sound.play();
+
+                sound.onended = () => {
+                    window.location.href = data.redirect_url;
+                };
+            });
+        });
+    </script>
+</body>
+</html>

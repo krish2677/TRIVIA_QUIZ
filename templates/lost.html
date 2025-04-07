@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>You Lost</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+<body class="lost-body">
+    <div class="lost-container fade-in-scale">
+        <h1 class="lost-title">😔 Oops, {{ name }}!</h1>
+        <p class="lost-subtitle">You take home <span class="lost-money">₹{{ money }}</span></p>
+
+        <div class="btn-group">
+            <a class="glow-btn red" href="/">🔁 Try Again</a>
+            <a class="glow-btn red" href="/leaderboard">📋 View Leaderboard</a>
+        </div>
+    </div>
+</body>
+</html>
