@@ -17,7 +17,7 @@ Welcome to **Trivia Quiz**, a web-based interactive quiz game powered by the Ope
 
 ## 🚀 Live Demo
 
-🌐 **Live Demo**: [Click here to play!](https://trivia-quiz.onrender.com)
+🌐 **Live Demo**: [Click here to play!](https://trivia-quiz-1.onrender.com)
 
 ---
 
