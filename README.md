@@ -32,108 +32,89 @@ The project includes an interactive interface, lifelines, timed questions, and a
 - **Open Trivia Database API**
 - **JSON (Leaderboard storage)**
 - **Docker**
-
----
-
-## 📂 Project Structure
-
-
-TRIVIA_QUIZ/
-│
-├── app.py
-├── requirements.txt
-├── Dockerfile
-├── leaderboard.json
-│
-├── templates/
-│ ├── index.html
-│ ├── question.html
-│ ├── lost.html
-│ ├── won.html
-│ └── leaderboard.html
-│
-├── static/
-│ ├── css
-│ ├── js
-│ └── images
-│
-└── README.md
-
-
 ---
 
 # ⚙️ Installation & Setup
 
 ## 1️⃣ Clone the Repository
-
 ```bash
 git clone https://github.com/YOUR_USERNAME/trivia-quiz.git
 cd trivia-quiz
+```
 2️⃣ Create a Virtual Environment
+```bash
 python -m venv venv
+```
 Activate Virtual Environment
-
-Windows
-
+```bash
 venv\Scripts\activate
-
-Mac / Linux
-
-source venv/bin/activate
+```
 3️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 4️⃣ Run the Application
+```bash
 python app.py
-
+```
 Open your browser and visit:
-
+```bash
 http://127.0.0.1:5000
+```
 🐳 Running with Docker
 
 This project is containerized using Docker, which allows the application to run consistently across different environments.
 
 Build the Docker Image
+```bash
 docker build -t trivia-quiz .
+```
 Run the Container
+```bash
 docker run -p 5000:5000 trivia-quiz
-
+```
 Open the application in your browser:
-
+```bash
 http://localhost:5000
-🧠 How It Works
+```
+---
+
+#  How It Works
 
 The application retrieves quiz questions dynamically using the Open Trivia Database API.
 
-The user selects a category.
+1. The user selects a category.
 
-The application fetches a random question from the API.
+2. The application fetches a random question from the API.
 
-Answer options are shuffled before displaying.
+3. Answer options are shuffled before displaying.
 
-The system tracks:
+4. The system tracks:
 
-player progress
+    - player progress
 
-quiz levels
+    - quiz levels
 
-lifelines
+    - lifelines
 
-reward money
+    - reward money
 
-Leaderboard data is stored in a JSON file.
+5. Leaderboard data is stored in a JSON file.
 
-📚 Learning Outcomes
+---   
+
+#  Learning Outcomes
 
 Through this project, I gained experience in:
 
-Building backend applications using Flask
+- Building backend applications using Flask
 
-Working with REST APIs
+- Working with REST APIs
 
-Implementing session management
+- Implementing session management
 
-Designing quiz logic with levels and lifelines
+- Designing quiz logic with levels and lifelines
 
-Structuring a full-stack web application
+- Structuring a full-stack web application
 
-Using Docker for application containerization
+- Using Docker for application containerization
