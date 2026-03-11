@@ -1,55 +1,139 @@
-# 🎯 Trivia Quiz
+# 🎮 Trivia Quiz Web Application
 
-Welcome to **Trivia Quiz**, a web-based interactive quiz game powered by the Open Trivia Database API. Compete, level up, use lifelines, and climb the leaderboard!
----
+A dynamic **web-based Trivia Quiz game** built using **Python and Flask**.  
+The application fetches real-time quiz questions from the **Open Trivia Database API** and allows users to test their knowledge across different categories such as Science, History, Geography, Sports, and more.
 
-## 🌟 Features
-
-- 🎮 Multiple-choice trivia questions
-- ⏱️ Timed rounds with increasing difficulty
-- 🧠 Lifelines: 50:50 and Skip
-- 💰 Earn virtual money as you progress
-- 🏆 Leaderboard with player name, score, level, and category
-- 🎨 Beautiful animated UI with glowing buttons and smooth transitions
-- 🔥 Category selection and difficulty scaling
+The project includes an interactive interface, lifelines, timed questions, and a leaderboard system to make the quiz engaging and competitive.
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Features
 
-🌐 **Live Demo**: [Click here to play!](https://trivia-quiz-1.onrender.com)
+- 🎮 Multiple-choice trivia questions  
+- 🌍 Questions fetched dynamically from the Open Trivia Database API  
+- ⏱️ Timed quiz rounds with increasing difficulty  
+- 🧠 Lifelines:
+  - **50:50** (removes two incorrect options)
+  - **Skip Question**
+- 💰 Progressive reward system based on quiz levels  
+- 🏆 Leaderboard system to track top players  
+- 📊 Category selection (Science, History, Geography, etc.)  
+- 🐳 Docker containerization for consistent environments  
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
-- **Backend**: Flask (Python)
-- **Frontend**: HTML, CSS, JavaScript
-- **API**: [Open Trivia Database](https://opentdb.com)
-- **Styling**: Custom CSS, Animations, Particles.js
+- **Python**
+- **Flask**
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Open Trivia Database API**
+- **JSON (Leaderboard storage)**
+- **Docker**
 
 ---
 
+## 📂 Project Structure
 
 
-📌 To-Do & Future Features
-Add multiplayer support
+TRIVIA_QUIZ/
+│
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── leaderboard.json
+│
+├── templates/
+│ ├── index.html
+│ ├── question.html
+│ ├── lost.html
+│ ├── won.html
+│ └── leaderboard.html
+│
+├── static/
+│ ├── css
+│ ├── js
+│ └── images
+│
+└── README.md
 
-More lifelines (e.g., audience poll)
 
-User login and profile history
+---
 
-Custom question sets
+# ⚙️ Installation & Setup
 
-
-📄 License
-This project is licensed under the MIT License. Feel free to fork, contribute, and use it as you like!
-
-## 📦 Installation
-
-1. Clone the repository:
+## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/krish2677/TRIVIA_QUIZ.git
-cd TRIVIA_QUIZ
+git clone https://github.com/YOUR_USERNAME/trivia-quiz.git
+cd trivia-quiz
+2️⃣ Create a Virtual Environment
+python -m venv venv
+Activate Virtual Environment
 
+Windows
+
+venv\Scripts\activate
+
+Mac / Linux
+
+source venv/bin/activate
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+4️⃣ Run the Application
+python app.py
+
+Open your browser and visit:
+
+http://127.0.0.1:5000
+🐳 Running with Docker
+
+This project is containerized using Docker, which allows the application to run consistently across different environments.
+
+Build the Docker Image
+docker build -t trivia-quiz .
+Run the Container
+docker run -p 5000:5000 trivia-quiz
+
+Open the application in your browser:
+
+http://localhost:5000
+🧠 How It Works
+
+The application retrieves quiz questions dynamically using the Open Trivia Database API.
+
+The user selects a category.
+
+The application fetches a random question from the API.
+
+Answer options are shuffled before displaying.
+
+The system tracks:
+
+player progress
+
+quiz levels
+
+lifelines
+
+reward money
+
+Leaderboard data is stored in a JSON file.
+
+📚 Learning Outcomes
+
+Through this project, I gained experience in:
+
+Building backend applications using Flask
+
+Working with REST APIs
+
+Implementing session management
+
+Designing quiz logic with levels and lifelines
+
+Structuring a full-stack web application
+
+Using Docker for application containerization
